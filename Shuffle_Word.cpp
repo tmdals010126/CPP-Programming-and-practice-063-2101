@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -28,3 +29,21 @@ void Shuffle_Word()
         text[n][1] = temp2;
     }
 }
+    void Shuffle_vector(vector< vector<wstring>>&v) //다른배열도 셔플할수있도록 함수 추가
+    {
+        wstring temp1;              // 단어  임시 저장공간
+        wstring temp2;              // 단어의 뜻 임시 저장공간
+        minstd_rand rand_shuffle(time(nullptr));
+        int n;
+        for (int i = static_cast<int>(v.size()) - 1; i >= 0; i--)
+        {
+            n = rand_shuffle() % text.size();
+            temp1 = v[i][0];
+            v[i][0] = v[n][0];
+            v[n][0] = temp1;
+            temp2 = v[i][1];
+            v[i][1] = v[n][1];
+            v[n][1] = temp2;
+        }
+    }
+
